@@ -61,7 +61,7 @@ def user_feed(username):
     posts_data = functions.open_json('data/data.json')
     comments_data = functions.open_json('data/comments.json')
 
-    match = functions.get_posts_by_user( posts_data, username)
+    match = functions.get_posts_by_user(posts_data, username)
     posts = functions.comments_count(match, comments_data)
     return render_template('user-feed.html', posts=posts)
 
@@ -114,9 +114,11 @@ def remove_bookmark(postid):
 def resource_not_found(e):
     return jsonify(error=str(e)), 404
 
+
 @app.errorhandler(500)
 def resource_not_found(e):
     return jsonify(error=str(e)), 500
+
 
 @app.route("/bookmarks")
 def bookmarks_page():
